@@ -171,7 +171,7 @@ function run_command(str)
 end
 
 -- User has privileges
-function is_sudo(user_id)
+is_sudo(msg.from.peer_id)
   local var = false
   if _config.sudo_users[user_id] then
     var = true
