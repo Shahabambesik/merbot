@@ -76,6 +76,7 @@ return {
       .."Color through text: red|green|blue|purple|black|white|gray\n"
       .."Colors through hex notation: (\"a56729\" is brown)\n"
       .."Or colors through decimals: (\"255-192-203\" is pink)"
+      <code>thanks to beatbot team</code>
   },
   patterns = {
     '^!qr (%w+) (%w+) (.+)$',
