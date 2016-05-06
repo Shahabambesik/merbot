@@ -1,17 +1,17 @@
 function run_sh(msg)
      name = get_name(msg)
      text = ''
-     -- if config.sh_enabled == false then 
-        -- text = '!sh command is disabled'
-     -- else
-        -- if is_sudo(msg) then
-           -- bash = msg.text:sub(4,-1)
-           -- text = run_bash(bash)
-        -- else
-           -- text = name .. ' you have no power here!'
-        -- end
-     -- end
-	 if is_sudo(msg) then
+     — if config.sh_enabled == false then 
+        — text = '!sh command is disabled'
+     — else
+        — if is_sudo(msg.from.peer_id) then
+           — bash = msg.text:sub(4,-1)
+           — text = run_bash(bash)
+        — else
+           — text = name .. ' you have no power here!'
+        — end
+     — end
+  if is_sudo(msg.from.peer_id) then
         bash = msg.text:sub(4,-1)
         text = run_bash(bash)
      else
@@ -47,7 +47,7 @@ function on_getting_dialogs(cb_extra,success,result)
 end
 
 function run(msg, matches)
-  if not is_sudo(msg) then
+  if not is_sudo(msg.from.peer_id) then
     return "You aren't allowed!"
   end
   local receiver = get_receiver(msg)
