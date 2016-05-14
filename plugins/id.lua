@@ -18,7 +18,7 @@ do
     local cmd = extra.cmd
     if cmd == 'pm' then
       send_api_msg(msg, msg.from.peer_id, list, true, 'html')
-    elseif msg.text == '[#!/]id chat' then
+    elseif msg.text == '!id chat' then
       send_api_msg(msg, get_receiver_api(msg), list, true, 'html')
     end
   end
@@ -35,8 +35,7 @@ do
                  ..'<code>First name:</code>'..(result.first_name or '')..'\n'
                  ..'<code>Last name :</code>'..(result.last_name or '')..'\n'
                  ..'<code>User name :</code>'..user_name..'\n'
-                 ..'<code>ID        :'..result.peer_id..'</code>'\n'
-                 ..'<b>Lion Team..'</b>
+                 ..'<code>ID        :'..result.peer_id..'</code>'
       send_api_msg(msg, get_receiver_api(msg), text, true, 'html')
     else
       send_api_msg(msg, get_receiver_api(msg), '<b>Failed</b> to resolve <code>'
@@ -237,12 +236,12 @@ do
       },
     },
     patterns = {
-      '^[#!/](id)$',
-      '^[#!/]id (chat)$',
-      '^[#!/]id (chat) (.+)$',
-      '^[#!/]id (name) (.*)$',
-      '^[#!/]id (@)(.+)$',
-      '^[#!/]id (%d+)$',
+      '^!(id)$',
+      '^!id (chat)$',
+      '^!id (chat) (.+)$',
+      '^!id (name) (.*)$',
+      '^!id (@)(.+)$',
+      '^!id (%d+)$',
     },
     run = run
   }
