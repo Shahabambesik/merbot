@@ -18,7 +18,7 @@ do
     local cmd = extra.cmd
     if cmd == 'pm' then
       send_api_msg(msg, msg.from.peer_id, list, true, 'html')
-    elseif msg.text == 'id chat' then
+    elseif msg.text == '[#!/]id chat' then
       send_api_msg(msg, get_receiver_api(msg), list, true, 'html')
     end
   end
