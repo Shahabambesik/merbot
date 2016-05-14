@@ -79,7 +79,7 @@ local function instagramMedia(msg, query)
 		  text = text.."*Name: *"..jdat.data.user.full_name.."\n"
 		  text = text.."*Like Count:* "..jdat.data.likes.count.."\n"
 	end
-	text = text.."\n[Sila Team](http://telegram.me/SilaProject)"
+	text = text.."\n[Lion Team](http://telegram.me/LionTeam)"
 	send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 local function run(msg, matches)
