@@ -1,8 +1,8 @@
 ﻿-- http://www.messletters.com/fa/
 
 local function run(msg, matches)
-	if not is_admin(msg) then
-		return "این قابلیت فقط مربوط به ادمینهاست"
+	if not is_mod(msg.from.peer_id) then
+		return "این قابلیت فقط مربوط به مدیر هاست"
 	end
 	if #matches < 2 then
 		return "بعد از این دستور، با قید یک فاصله کلمه یا جمله ی مورد نظر را جهت زیبا نویسی وارد کنید"
