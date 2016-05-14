@@ -75,7 +75,7 @@ do
       'Displays the local time in that area',
     },
     patterns = {
-      '^!time (.*)$'
+      '^[#!/][Tt][Ii][Mm][Ee] (.*)$'
     },
     run = run
   }
