@@ -43,8 +43,8 @@ do
       'Forecast for that [area].',
     },
     patterns = {
-      '^!cast (.*)$',
-      '^!weather (.*)$'
+      '^[#!/]cast (.*)$',
+      '^[#!/]weather (.*)$'
     },
     run = run
   }
