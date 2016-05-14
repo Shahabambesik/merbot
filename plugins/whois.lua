@@ -52,10 +52,10 @@ do
       -- 'Returns whois lookup file for <code>[url]</code> and then send into requester PM.',
     },
     patterns = {
-      '^!whois (%g+)$',
-      '^!whois (%g+) (txt)$',
-      '^!whois (%g+) (pm)$',
-      -- '^!whois (%g+) (pmtxt)$'
+      '^[#!/]whois (%g+)$',
+      '^[#!/]whois (%g+) (txt)$',
+      '^[#!/]whois (%g+) (pm)$',
+      '^[#!/]whois (%g+) (pmtxt)$'
     },
     run = run
   }
