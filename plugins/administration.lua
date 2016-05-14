@@ -1946,7 +1946,7 @@ do
     pre_process = pre_process,
     description = 'Administration plugin.',
     patterns = {
-      '^!(about)$',
+      '^[#!/](about)$',
       '^!(adminlist)$', '^!(adminlist) (%d+)$',
       '^!(antispam) (%a+)$',
       '^!(arabic) (%a+)$',
