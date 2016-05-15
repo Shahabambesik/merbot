@@ -1,5 +1,4 @@
 local function run(msg,matches)
-    if is_sudo(msg.from.peer_id) then
     local api_key = ''
     local channel_id = '@Shahab_Ch'
     local text = matches[1]
