@@ -1,18 +1,21 @@
-local function run(msg,matches)
-    local api_key = ''
-    local channel_id = '@Shahab_Ch'
-    local text = matches[1]
-    local url = 'https://api.telegram.org/bot'..api_key..'/sendMessage?chat_id='..channel_id..'&text='..text..'&parse_mode=Markdown'
-    local dat, res = https.request(url)
-      if res == 400 then
-         reply_msg(msg.id, 'Error', ok_cb, true)
-      end
-  end
-      return 'Sent !'
-  end
+  local function run(msg, matches)
+      if is_sudo(msg.from.peer_id) then
+  local web_preview = '&disable_web_page_preview='..(tostring(disable_web_page_preview) or '')
+  local markdown = '&parse_mode='..('markdown' or 'HTML')
+  local url = 'https://api.telegram.org/bot'..token..'/sendMessage'
+  local response = {}
+local text = matches[1]
+  local res, code = https.request{
+    url = url..'?chat_id=@Shahab_Ch'..markdown..web_preview..'&text='..URL.escape(text),
+    method = "POST",
+    sink = ltn12.sink.table(response),
+  }
+  return "Sent!\nSee @Shahab_Ch"
+end
+end
   return {
-      patterns = {
-          "^[!/#]channel (.*)$"
-          },
-      run = run
+    patterns = {
+      '^[#!/]send (.+)$'
+    },
+    run = run
   }
