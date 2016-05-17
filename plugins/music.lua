@@ -55,7 +55,7 @@ function run(msg, matches)
    redis:hset(hash, num, 'Artist: '.. jdat.response[i].artist .. '\nTitle: '..jdat.response[i].title..' | '..time..'\n\n'.."[Download](http://GPMod.ir/dl.php?q="..jdat.response[i].owner_id.."_"..jdat.response[i].aid..')')
    end
   end
-  text = text..'\n----------------------\n*Use the following command to download*.\n\n`!dl <number>`\n\n*(example)*: `!dl 1`\n\n*LionTeam*'
+  text = text..'\n----------------------\n*Use the following command to download*.\n\n`!dl <number>`\n\n*(example)*: `!dl 1`\n\n[LionTeam](telegram.me/lionteam)'
     send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
  end
 
