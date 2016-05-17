@@ -51,11 +51,11 @@ if matches[1] == "setfile" then
   file:close()
   return "Done!"
   end
-if matches[1] == 'dir' and is_sudo(msg) then
+if matches[1] == 'dir' and is_sudo(msg.from.peer_id) then
 local text = io.popen("cd cloud && ls"):read('*all')
   return text
 end
-if matches[1] == 'show' and is_sudo(msg) then
+if matches[1] == 'show' and is_sudo(msg.from.peer_id) then
 			if #matches == 2 then
 local file = io.popen("cat cloud/"..matches[2] .." "):read('*all')
   return file
