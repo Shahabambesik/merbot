@@ -120,7 +120,7 @@ local function run(msg, matches)
 		--local text = text:gsub("_",tar_font[64])
 		table.insert(result, text)
 	end
-	local result_text = "Your Text"..matches[2].."\nطراحی با "..tostring(#fonts).." فونت:\n______________________________\n"
+	local result_text = "Your Text :\n"..matches[2].."\nطراحی با "..tostring(#fonts).." فونت:\n______________________________\n"
 	a=0
 	for v=1,#result do
 		a=a+1
