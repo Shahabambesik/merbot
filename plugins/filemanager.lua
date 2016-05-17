@@ -36,7 +36,7 @@ if matches[1] == "get" then
   end
 if matches[1] == "get>" then 
     if is_sudo(msg) then
-      send_document('channel#id'..msg.from.id, "cloud/"..matches[2], ok_cb, false)
+      send_document('channel#id'..msg.to.id, "cloud/"..matches[2], ok_cb, false)
       else 
         return nil
     end
