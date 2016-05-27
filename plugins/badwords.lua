@@ -39,7 +39,7 @@ local function list_variables2(msg, value)
     local names = redis:hkeys(hash)
     local text = ''
     for i=1, #names do
-	if string.match(value, names[i]) and not is_momod(msg) then
+	if string.match(value, names[i]) and not is_mod(msg.from.peer_id) then
 	if msg.to.type == 'channel' then
 	delete_msg(msg.id,ok_cb,false)
 	else
@@ -72,7 +72,7 @@ end
 
 local function run(msg, matches)
   if matches[2] == 'addword' then
-  if not is_momod(msg) then
+  if not is_mod(msg.from.peer_id) then
    return 'only for moderators'
   end
   local name = string.sub(matches[3], 1, 50)
@@ -83,11 +83,11 @@ local function run(msg, matches)
   if matches[2] == 'badwords' then
   return list_variablesbad(msg)
   elseif matches[2] == 'clearbadwords' then
-if not is_momod(msg) then return '_|_' end
+if not is_mod(msg.from.peer_id) then return '_|_' end
   local asd = '1'
     return clear_commandbad(msg, asd)
   elseif matches[2] == 'remword' or matches[2] == 'rw' then
-   if not is_momod(msg) then return '_|_' end
+   if not is_mod(msg.from.peer_id) then return '_|_' end
     return clear_commandsbad(msg, matches[3])
   else
     local name = user_print_name(msg.from)
