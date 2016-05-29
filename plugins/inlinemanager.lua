@@ -2,7 +2,7 @@ local api_key = _config.bot_api.key
 local function run(msg,matches)
     if is_sudo(msg.from.peer_id) then
     local text = matches[1]
-    local channel_id = '@BeatBot_team'
+    local channel_id = '@Shahab_Ch'
     local link_text = matches[2]
     local link = matches[3]
     local keyboard = '{"inline_keyboard":[[{"text":"'..link_text..'","url":"'..link..'"}]]}'
