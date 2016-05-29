@@ -1,7 +1,7 @@
 do
 local function run(msg, matches)
     local hash = 'rank:variables'
-  local uhash = 'user:'..msg.from.peer_id
+  local uhash = 'user:'..msg.from.id
    local user = redis:hgetall(uhash)
     local um_hash = 'msgs:'..msg.from.peer_id..':'..msg.to.peer_id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
