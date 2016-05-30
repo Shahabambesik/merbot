@@ -5,12 +5,12 @@ end
 return {
 description = "text to markdown",
 usage = {
-"/markdown *text* : text to bold",
-"/markdown [text](link) : link to hyperlinkhyperlink",
-"/markdown _text_ : text to italic",
+"/echo *text* : text to bold",
+"/echo [text](link) : link to hyperlinkhyperlink",
+"/echo _text_ : text to italic",
 },
 patterns = {
-"^[!/#]markdown (.*)"
+"^[!/#]echo (.*)"
 },
 run = run 
 }
