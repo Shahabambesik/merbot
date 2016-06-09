@@ -42,7 +42,7 @@ local function run(msg, matches)
     elseif matches[3] then
         f = matches[3]
         end
-  local url = "http://assets.imgix.net/examples/redleaf.jpg?blur=120&w=700&h=400&fit=crop&txt="..lionteam.."&txtsize="..size.."&txtclr="..f.."&txtalign=middle,center&txtfont=Futura%20Condensed%20Medium&mono=ff6598cc=?markscale=60&markalign=center%2Cdown&mark64=aHR0cDovL2xpb250ZWFtLmlyL2ltZy9zcGVjdHJlbG9nby5wbmc"
+  local url = "http://assets.imgix.net/examples/redleaf.jpg?blur=120&w=700&h=400&fit=crop&txt="..lionteam.."&txtsize="..size.."&txtclr="..f.."&txtalign=middle,center&txtfont=Futura%20Condensed%20Medium&mono=ff6598cc=?markscale=60&markalign=center%2Cdown&mark64=aHR0cDovL2xpb250ZWFtLmlyL2ltZy9ocHIucG5n"
   local ext = ".webp"
   local cb_extra = {file_path=file}
 
