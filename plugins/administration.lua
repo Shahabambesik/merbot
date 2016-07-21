@@ -439,52 +439,52 @@ do
     local usr = '@'..result.from.username or result.from.first_name
     local cmd = extra.text
     if is_chat_msg(extra) then
-      if cmd == '!kick' then
+      if cmd == 'kick' then
         kick_user(extra, gid, uid)
       end
-      if cmd == '!visudo' or cmd == '!sudo' then
+      if cmd == 'visudo' or cmd == 'sudo' then
         visudo({msg=extra, usr=usr}, uid)
       end
-      if cmd == '!desudo' then
+      if cmd == 'desudo' then
         desudo({msg=extra, usr=usr}, uid)
       end
-      if cmd == '!adminprom' or cmd == '!admin' then
+      if cmd == 'adminprom' or cmd == 'admin' then
         promote_admin({msg=extra, usr=usr}, uid)
       end
-      if cmd == '!admindem' or cmd == '!deadmin' then
+      if cmd == 'admindem' or cmd == 'deadmin' then
         demote_admin({msg=extra, usr=usr}, uid)
       end
-      if cmd == '!setowner' or cmd == '!gov' then
+      if cmd == 'setowner' or cmd == 'gov' then
         promote_owner({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!remowner' or cmd == '!degov' then
+      if cmd == 'remowner' or cmd == 'degov' then
         demote_owner({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!promote' or cmd == '!mod' then
+      if cmd == 'promote' or cmd == 'mod' then
         promote({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!demote' or cmd == '!demod' then
+      if cmd == 'demote' or cmd == 'demod' then
         demote({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!invite' then
+      if cmd == 'invite' then
         invite_user(extra, gid, uid)
       end
-      if cmd == '!ban' then
+      if cmd == 'ban' then
         ban_user({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!superban' or cmd == '!gban' or cmd == '!hammer' then
+      if cmd == 'superban' or cmd == 'gban' or cmd == 'hammer' then
         global_ban_user({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!unban' then
+      if cmd == 'unban' then
         unban_user({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!superunban' or cmd == '!gunban' or cmd == '!unhammer' then
+      if cmd == 'superunban' or cmd == 'gunban' or cmd == 'unhammer' then
         global_unban_user({msg=extra, usr=usr}, uid)
       end
-      if cmd == '!whitelist' then
+      if cmd == 'whitelist' then
         whitelisting({msg=extra, usr=usr}, gid, uid)
       end
-      if cmd == '!unwhitelist' then
+      if cmd == 'unwhitelist' then
         unwhitelisting({msg=extra, usr=usr}, gid, uid)
       end
     end
@@ -1663,16 +1663,16 @@ do
       if is_mod(msg, gid, uid) then
         -- Print group settings
         if matches[1] == 'group' and matches[2] == 'settings' then
-          local text = 'Settings for *'..msg.to.title..'*\n'
-                ..'*-* Arabic message = `'..data.lock.arabic..'`\n'
-                ..'*-* Lock group from bot = `'..data.lock.bot..'`\n'
-                ..'*-* Lock group name = `'..data.lock.name..'`\n'
-                ..'*-* Lock group photo = `'..data.lock.photo..'`\n'
-                ..'*-* Lock group member = `'..data.lock.member..'`\n'
-                ..'*-* Spam protection = `'..data.antispam..'`\n'
-                ..'*-* Sticker policy = `'..data.sticker..'`\n'
-                ..'*-* Welcome message = `'..data.welcome.to..'`\n'
-          send_api_msg(msg, get_receiver_api(msg), text, true, 'markdown')
+          local text = 'Settings for <b>'..msg.to.title..'</b>\n'
+                ..'<b>-</b> Arabic message = <code>'..data.lock.arabic..'</code>\n'
+                ..'<b>-</b> Lock group from bot = <code>'..data.lock.bot..'</code>\n'
+                ..'<b>-</b> Lock group name = <code>'..data.lock.name..'</code>\n'
+                ..'<b>-</b> Lock group photo = <code>'..data.lock.photo..'</code>\n'
+                ..'<b>-</b> Lock group member = <code>'..data.lock.member..'</code>\n'
+                ..'<b>-</b> Spam protection = <code>'..data.antispam..'</code>\n'
+                ..'<b>-</b> Sticker policy = <code>'..data.sticker..'</code>\n'
+                ..'<b>-</b> Welcome message = <code>'..data.welcome.to..'</code>\n'
+          send_api_msg(msg, get_receiver_api(msg), text, true, 'html')
         end
 
         -- Invite user by {id|username|name|reply}
