@@ -1653,7 +1653,29 @@ do
         if matches[1] == 'clear' and matches[2] == 'mods' then
           del_modlist(msg, gid)
         end
-
+  if msg.text:match('(.*)') and _config.administration[gid] then
+        if uid > 0 and not is_mod(msg, gid, uid) then
+          local data = load_data(_config.administration[gid])
+          local arabic_hash = 'mer_arabic:'..gid
+          local is_arabic_offender = redis:sismember(arabic_hash, uid)
+          if data.lock.chat == 'warn' then
+            if is_chat_offender then
+              kick_user(msg, gid, uid)
+              redis:srem(arabic_hash, uid)
+            end
+            if not is_chat_offender then
+              redis:sadd(arabic_hash, uid)
+              reply_msg(msg.id, 'Please do not post.\n'
+                  ..'Obey the rules or you\'ll be kicked.', ok_cb, true)
+            end
+          end
+          if data.lock.arabic == 'kick' then
+            kick_user(msg, gid, uid)
+            reply_msg(msg.id, 'Arabic is not allowed here!', ok_cb, true)
+          end
+        end
+      end
+             
         -- Download group configuration file.
         if matches[1] == 'getconfig' and matches[2]:match('^%d+$') then
           get_config(msg, matches[2])
