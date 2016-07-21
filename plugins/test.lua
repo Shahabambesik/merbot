@@ -18,7 +18,7 @@ local function do_keyboard_buygroup()
 end
 local function run(msg,matches)
 local keyboard = do_keyboard_buygroup()
- send_api_keyboard(msg, get_receiver_api(msg), 'Hprbot\nAn Advance Administration Bot based on merbot', keyboard)
+ send_api_keyboard(msg, get_receiver_api(msg), 'test', keyboard)
 end
 return {
 patterns = {
