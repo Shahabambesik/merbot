@@ -7,11 +7,11 @@
   local response = {}
 local text = matches[1]
   local res, code = https.request{
-    url = url..'?chat_id=@Shahab_Ch'..markdown..web_preview..'&text='..URL.escape(text),
+    url = url..'?chat_id=@HpRnews'..markdown..web_preview..'&text='..URL.escape(text),
     method = "POST",
     sink = ltn12.sink.table(response),
   }
-  return "Sent!\nSee @Shahab_Ch"
+  return "Sent!\nSee @HPRnews"
 end
 end
   return {
