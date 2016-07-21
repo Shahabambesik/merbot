@@ -1672,6 +1672,7 @@ do
                 ..'<b>-</b> Spam protection = <code>'..data.antispam..'</code>\n'
                 ..'<b>-</b> Sticker policy = <code>'..data.sticker..'</code>\n'
                 ..'<b>-</b> Welcome message = <code>'..data.welcome.to..'</code>\n'
+                ..'<a href="https://telegram.me/LionTeam">LionTeam</a>'
           send_api_msg(msg, get_receiver_api(msg), text, true, 'html')
         end
 
