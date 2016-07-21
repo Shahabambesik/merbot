@@ -1669,8 +1669,6 @@ do
                 ..'<b>-</b> Lock group name = <code>'..data.lock.name..'</code>\n'
                 ..'<b>-</b> Lock group photo = <code>'..data.lock.photo..'</code>\n'
                 ..'<b>-</b> Lock group member = <code>'..data.lock.member..'</code>\n'
-                ..'<b>-</b> image = <code>'ok'</code>\n'
-                ..'<b>-</b> chat = <code>'ok'</code>\n'
                 ..'<b>-</b> Spam protection = <code>'..data.antispam..'</code>\n'
                 ..'<b>-</b> Sticker policy = <code>'..data.sticker..'</code>\n'
                 ..'<b>-</b> Welcome message = <code>'..data.welcome.to..'</code>\n'
