@@ -6,7 +6,7 @@ local function do_keyboard_buygroup()
                 {text = '📡Channel', url = 'https://telegram.me/HPRNews'},
       },
     {
-                {text = '💵Order Group', url = 'https://telegram.me/joinchat/DJM4TT6uQn7DCH1jZn-rCQ},
+                {text = '💵Order Group', url = 'https://telegram.me/joinchat/DJM4TT6uQn7DCH1jZn-rCQ'},
                 {text = '🤖Support Bot', url = 'https://http://telegram.me/HprSupportBot'},
       },
    {
