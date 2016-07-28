@@ -139,7 +139,7 @@ do
 	local hash = 'floodc:'..msg.from.peer_id..':'..msg.to.peer_id
 	local msgs = redis:get(hash)
 	local name = 'Name : '
-	local caption = name..' '..msg.from.first_name..'\nUsername : '..msg.from.username..'\n ID : ['..msg.from.peer_id..']%0AYour messages conut in this group : '..msgs
+	local caption = name..' '..msg.from.first_name..'%0AUsername : '..msg.from.username..'%0A ID : ['..msg.from.peer_id..']%0AYour messages conut in this group : '..msgs
 	local url = 'https://api.telegram.org/bot'.._config.bot_api.key..'/getUserProfilePhotos?user_id='
 	local res, code = https.request(url..msg.from.peer_id)
 	local jdat = json:decode(res)
