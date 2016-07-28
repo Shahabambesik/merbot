@@ -1,16 +1,3 @@
---[[
-
-Print user identification/informations by replying their post or by providing
-their username or print_name.
-
-!id <text> is the least reliable because it will scan trough all of members
-and print all member with <text> in their print_name.
-
-chat_info can be displayed on group, send it into PM, or save as file then send
-it into group or PM.
-
---]]
-
 do
 
   local function send_group_members(extra, list)
@@ -148,7 +135,17 @@ do
 --------------------------------------------------------------------------------
 
   local function run(msg, matches)
-
+	if matches[1] == 'me' then
+	local hash = 'floodc:'..msg.from.peer_id..':'..msg.to.peer_id
+	local msgs = redis:get(hash)
+	local name = 'User : '
+	local caption = name..' ['..msg.from.peer_id..']%0AYour messages conut in this group : '..msgs
+	local url = 'https://api.telegram.org/bot'.._config.bot_api.key..'/getUserProfilePhotos?user_id='
+	local res, code = https.request(url..msg.from.peer_id)
+	local jdat = json:decode(res)
+	local fileid = jdat.result.photos[1][3].file_id
+	https.request('https://api.telegram.org/bot'.._config.bot_api.key..'/sendphoto?chat_id='..get_receiver_api(msg)..'&photo='..fileid..'&caption='..caption)
+	end
     local gid = msg.to.peer_id
     local uid = msg.from.peer_id
 
@@ -157,7 +154,7 @@ do
     end
 
     if is_mod(msg, gid, uid) then
-      if msg.reply_id and msg.text == '!id' then
+      if matches[1] == 'id' and msg.reply_id then
         get_message(msg.reply_id, action_by_reply, msg)
       elseif matches[1] == 'chat' then
         if msg.to.peer_type == 'channel' then
@@ -180,7 +177,7 @@ do
       end
     end
 
-    if not msg.reply_id and msg.text == '!id' then
+    if matches[1] == 'id' and not msg.reply_id then
       if msg.from.username then
         user_name = '@'..msg.from.username
       else
@@ -206,42 +203,40 @@ do
     description = 'Know your id or the id of a chat members.',
     usage = {
       moderator = {
+        '<code>!me</code>',
+        'Return your information.',
         '<code>!id</code>',
         'Return ID of replied user if used by reply.',
-        '',
         '<code>!id chat</code>',
         'Return the IDs of the current chat members.',
-        '',
         '<code>!id chat txt</code>',
         'Return the IDs of the current chat members and send it as text file.',
-        '',
         '<code>!id chat pm</code>',
         'Return the IDs of the current chat members and send it to PM.',
-        '',
         '<code>!id chat pmtxt</code>',
         'Return the IDs of the current chat members, save it as text file and then send it to PM.',
-        '',
         '<code>!id [user_id]</code>',
         'Return the IDs of the user_id.',
-        '',
         '<code>!id @[user_name]</code>',
         'Return the member username ID from the current chat.',
-        '',
         '<code>!id [name]</code>',
         'Search for users with name on <code>first_name</code>, <code>last_name</code>, or <code>print_name</code> on current chat.'
       },
       user = {
+        '<code>!me</code>',
+        'Return your information.',
         '<code>!id</code>',
         'Return your ID and the chat id if you are in one.'
       },
     },
     patterns = {
-      '^!(id)$',
-      '^!id (chat)$',
-      '^!id (chat) (.+)$',
-      '^!id (name) (.*)$',
-      '^!id (@)(.+)$',
-      '^!id (%d+)$',
+      '^[!/#](me)$',
+      '^[!/#](id)$',
+      '^[!/#]id (chat)$',
+      '^[!/#]id (chat) (.+)$',
+      '^[!/#]id (name) (.*)$',
+      '^[!/#]id (@)(.+)$',
+      '^[!/#]id (%d+)$',
     },
     run = run
   }
